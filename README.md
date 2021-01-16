@@ -7,7 +7,7 @@ We wanted to have fun at this hackathon and create a reverse version of the clas
 ## What We Used
 - This project was made using the [Processing](https://processing.org/download/) programming language
 - We Used [Happy Coding Documentation](https://happycoding.io/tutorials/processing/collision-detection#edge-collision-detection) to learn about collision detection!
-- Figma for design conceptualization
+- [Figma](https://www.figma.com/) for game design conceptualization
 
 ## Team
 - [@phildecroos](https://github.com/phildecroos)
