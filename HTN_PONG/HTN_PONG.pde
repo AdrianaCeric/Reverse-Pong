@@ -1,8 +1,8 @@
 //Ball
-int originX = 500;
-int originY = 350;
-int h = 35;
-int w = 35;
+int ballX = 500;
+int ballY = 350;
+int ballHeight = 35;
+int ballWidth = 35;
 int speedX = 4;
 int speedY = 4;
 int directionX = 1;  
@@ -39,7 +39,7 @@ void draw() {
 
   //Ball
   fill(194, 16, 0);
-  ellipse(originX, originY, h, w);
+  ellipse(ballX, ballY, ballHeight, ballWidth);
 
   moveCircle();
   movePaddle();
@@ -48,13 +48,13 @@ void draw() {
 
 
 void moveCircle() {  
-  originX = originX + speedX*1;
-  originY = originY + speedY*1;
+  ballX = ballX + speedX * 1;
+  ballY = ballY + speedY * 1;
 
-  if (originX > width-w+20 || originX < w) {
+  if (ballX > width- ballWidth +20 || ballX < ballWidth) {
     speedX *= -1;
   }
-  if (originY > height-h+20 || originY < h) {
+  if (ballY > height- ballHeight +20 || ballY < ballHeight) {
     speedY *= -1;
   }
 }
@@ -89,11 +89,11 @@ void movePaddle() {
 
 void moveCollisions() {
   //Collisions
-  if (originX - w/2 < player1X + 40/2 && originY - h/2 < player1Y + 140/2 && originY + h/2 > player1Y - 140/2 ) {
+  if ((ballX - ballWidth / 2 < player1X + 40) && (ballY - ballHeight / 2 < player1Y + 140) && (ballY + ballHeight / 2 > player1Y)) {
     if (speedX < 0) {
       speedX = -speedX*1;
     }
-  } else if (originX + w/2 > player2X - 40/2 && originY - h/2 < player2Y + 140/2 && originY + h/2 > player2Y - 140/2 ) {
+  } else if ((ballX + ballWidth / 2 > player2X) && (ballY - ballHeight / 2 < player2Y + 140) && (ballY + ballHeight/2 > player2Y)) {
     if (speedX > 0) {
       speedX = -speedX*1;
     }
