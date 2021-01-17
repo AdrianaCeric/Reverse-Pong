@@ -1,3 +1,6 @@
+import processing.sound.*;
+  
+  SoundFile song;
 //Ball
 int ballX;
 int ballY;
@@ -40,6 +43,10 @@ int players = 1;
 void setup() {
   size(900, 700);
   reset();
+  
+  //Sound
+  song = new SoundFile(this, "song.mp3");
+  song.play();
 }
 
 void reset() {
@@ -80,6 +87,8 @@ void reset() {
   screen = true;
 }// end reset
 
+
+
 void draw() {
   background(0);
 
@@ -112,6 +121,7 @@ void draw() {
     strokeWeight(0);
     
     //Left wall
+    noStroke();
     fill(238,174,202);
     rect(0, 0, 40, 140);
     fill(221,176,208);
@@ -124,8 +134,10 @@ void draw() {
     rect(0, 560, 40, 140);
     
     //Right wall
+    noStroke();
     fill(238,174,202);
     rect(860, 0, 40, 140);
+    noStroke();
     fill(221,176,208);
     rect(860, 140, 40, 140);
     fill(195,180,217);
@@ -268,4 +280,4 @@ void keyReleased() {
   } else if (keyCode == DOWN) {
     downY = false;
   }
-}
+ }
