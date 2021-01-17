@@ -45,8 +45,8 @@ void reset() {
   ballY = 350;
   ballHeight = 35;
   ballWidth = 35;
-  speedX = 4;
-  speedY = 4;
+  speedX = 5;
+  speedY = 5;
   directionX = 1;  
   directionY = 1;
 
@@ -143,11 +143,13 @@ void movePaddle() {
   if (downX == true) {
     player1Y = player1Y + 5;
   }
-  if (upY == true) {
-    player2Y = player2Y - 5;
+  
+  //Bot movement code
+  if ((ballY <= player2Y + 70) && (speedX >= 0)) {
+    player2Y = player2Y - 4;
   }
-  if (downY == true) {
-    player2Y = player2Y + 5;
+  if ((ballY > player2Y + 70) && (speedX >= 0)) {
+    player2Y = player2Y + 4;
   } 
 
   //Wrap around
@@ -156,6 +158,7 @@ void movePaddle() {
   } else if (player1Y + 140 < 0) {
     player1Y = 700;
   }
+  
   if (player2Y > 700) {
     player2Y = 0;
   } else if (player2Y + 140 < 0) {
