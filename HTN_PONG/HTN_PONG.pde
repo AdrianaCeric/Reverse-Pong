@@ -127,10 +127,10 @@ void moveCircle() {
   ballX = ballX + speedX * 1;
   ballY = ballY + speedY * 1;
 
-  if (ballX > width- ballWidth +20 || ballX < ballWidth) {
+  if (ballX > width- ballWidth +20 || ballX < ballWidth / 2) {
     speedX *= -1;
   }
-  if (ballY > height- ballHeight +20 || ballY < ballHeight) {
+  if (ballY > height- ballHeight +20 || ballY < ballHeight / 2) {
     speedY *= -1;
   }
 }
