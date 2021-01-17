@@ -1,65 +1,125 @@
 //Ball
-int ballX = 500;
-int ballY = 350;
-int ballHeight = 35;
-int ballWidth = 35;
-int speedX = 4;
-int speedY = 4;
-int directionX = 1;  
-int directionY = 1;
+int ballX;
+int ballY;
+int ballHeight;
+int ballWidth;
+int speedX;
+int speedY;
+int directionX; 
+int directionY;
 
 //Paddles
-int player1X = 30;
-int player2X = 830;
-int player1Y = 350;
-int player2Y = 350;
+int player1X;
+int player2X;
+int player1Y;
+int player2Y;
 
 //Healthbars
-int bar1X = 100;
-int bar1Y = 20;
-int player1health = 100;
-int bar1colour = #22E515;
-int bar2X = 700;
-int bar2Y = 20;
-int player2health = 100;
-int bar2colour = #22E515;
+int bar1X;
+int bar1Y;
+int player1health;
+int bar1colour;
+int bar2X;
+int bar2Y;
+int player2health;
+int bar2colour;
 
 //Movements
-boolean upX = false;
-boolean downX = false;
-boolean upY = false;
-boolean downY = false;
+boolean upX;
+boolean downX;
+boolean upY;
+boolean downY;
+
+//Text
+String start; 
+boolean screen;
 
 void setup() {
   size(900, 700);
+  reset();
 }
+
+void reset() {
+  //Ball
+  ballX = 500;
+  ballY = 350;
+  ballHeight = 35;
+  ballWidth = 35;
+  speedX = 4;
+  speedY = 4;
+  directionX = 1;  
+  directionY = 1;
+
+  //Paddles
+  player1X = 30;
+  player2X = 830;
+  player1Y = 350;
+  player2Y = 350;
+
+  //Healthbars
+  bar1X = 100;
+  bar1Y = 20;
+  player1health = 100;
+  bar1colour = #22E515;
+  bar2X = 700;
+  bar2Y = 20;
+  player2health = 100;
+  bar2colour = #22E515;
+
+  //Movements
+  upX = false;
+  downX = false;
+  upY = false;
+  downY = false;
+
+  //Texts
+  start = "Press ENTER to begin the game."; 
+  screen = true;
+}// end reset
 
 void draw() {
   background(0);
 
-  //Empty Space**
-  fill(255);
-  rect(30, 0, 40, 1000);
-  rect(830, 0, 40, 1000);
 
-  //Paddles
-  fill(0);
-  rect(player1X, player1Y, 40, 140);
-  rect(player2X, player2Y, 40, 140);
-  
-  //Healthbars
-  fill(bar1colour);
-  rect(bar1X, bar1Y, player1health, 15);
-  fill(bar2colour);
-  rect(bar2X, bar2Y, player2health, 15);
+  if (screen == true) {
+    startScreen();
+  }
 
-  //Ball
-  fill(194, 16, 0);
-  ellipse(ballX, ballY, ballHeight, ballWidth);
+  if (key == ENTER) {
+    screen = false;
+  }
 
-  moveCircle();
-  movePaddle();
-  moveCollisions();
+  if (screen == false) {
+    background(0);
+    //Empty Space**
+    fill(255);
+    rect(30, 0, 40, 1000);
+    rect(830, 0, 40, 1000);
+
+    //Paddles
+    fill(0);
+    rect(player1X, player1Y, 40, 140);
+    rect(player2X, player2Y, 40, 140);
+
+    //Healthbars
+    fill(bar1colour);
+    rect(bar1X, bar1Y, player1health, 15);
+    fill(bar2colour);
+    rect(bar2X, bar2Y, player2health, 15);
+
+    //Ball
+    fill(194, 16, 0);
+    ellipse(ballX, ballY, ballHeight, ballWidth);
+
+    moveCircle();
+    movePaddle();
+    moveCollisions();
+  }
+}
+
+void startScreen() {
+  textSize(32);
+  text(start, 200, 350, 10);
 }
 
 
@@ -123,9 +183,15 @@ void moveCollisions() {
       }
     }
   }
+
+  if (player1health <= 0 || player2health <= 0) {
+    screen = true;
+    reset();
+  }
 }
 
 void keyPressed() {
+  screen = false;
   if (key == 'w' || key == 'W') {
     upX = true;
   } else if (key == 's' || key == 'S') {
@@ -138,6 +204,7 @@ void keyPressed() {
 }
 
 void keyReleased() {
+  screen = false;
   if (key == 'w' || key == 'W') {
     upX = false;
   } else if (key == 's' || key == 'S') {
