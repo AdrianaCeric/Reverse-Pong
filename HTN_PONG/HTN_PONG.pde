@@ -1,6 +1,6 @@
 import processing.sound.*;
   
-  SoundFile song;
+SoundFile song;
 //Ball
 int ballX;
 int ballY;
