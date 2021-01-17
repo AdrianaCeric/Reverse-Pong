@@ -51,8 +51,8 @@ void reset() {
   directionY = 1;
 
   //Paddles
-  player1X = 30;
-  player2X = 830;
+  player1X = 0;
+  player2X = 860;
   player1Y = 350;
   player2Y = 350;
 
@@ -93,8 +93,8 @@ void draw() {
     background(0);
     //Empty Space**
     fill(255);
-    rect(30, 0, 40, 1000);
-    rect(830, 0, 40, 1000);
+    rect(0, 0, 40, 1000);
+    rect(860, 0, 40, 1000);
 
     //Paddles
     fill(0);
