@@ -14,6 +14,16 @@ int player2X = 830;
 int player1Y = 350;
 int player2Y = 350;
 
+//Healthbars
+int bar1X = 100;
+int bar1Y = 20;
+int player1health = 100;
+int bar1colour = #22E515;
+int bar2X = 700;
+int bar2Y = 20;
+int player2health = 100;
+int bar2colour = #22E515;
+
 //Movements
 boolean upX = false;
 boolean downX = false;
@@ -36,6 +46,12 @@ void draw() {
   fill(0);
   rect(player1X, player1Y, 40, 140);
   rect(player2X, player2Y, 40, 140);
+  
+  //Healthbars
+  fill(bar1colour);
+  rect(bar1X, bar1Y, player1health, 15);
+  fill(bar2colour);
+  rect(bar2X, bar2Y, player2health, 15);
 
   //Ball
   fill(194, 16, 0);
@@ -91,11 +107,20 @@ void moveCollisions() {
   //Collisions
   if ((ballX - ballWidth / 2 < player1X + 40) && ((ballY - ballHeight / 2 > player1Y + 140) || (ballY + ballHeight / 2 < player1Y))) {
     if (speedX < 0) {
+      player1health -= 20;
       speedX = -speedX*1;
+      if (player1health == 20) {
+        bar1colour = #F51911;
+      }
     }
   } else if ((ballX + ballWidth / 2 > player2X) && ((ballY - ballHeight / 2 > player2Y + 140) || (ballY + ballHeight/2 < player2Y))) {
     if (speedX > 0) {
+      player2health -= 20;
+      bar2X += 20;
       speedX = -speedX*1;
+      if (player2health == 20) {
+        bar2colour = #F51911;
+      }
     }
   }
 }
