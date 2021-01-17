@@ -83,7 +83,7 @@ void reset() {
   downY = false;
 
   //Texts
-  start = "Press 1 for 1 player or 2 for 2 players"; 
+  start = "Press '1' for 1 player or '2' for 2 players"; 
   screen = true;
 }// end reset
 
